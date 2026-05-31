@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pythmpg"
+version = "1.0.0"
+description = "MPG project"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    {name = "Andrea Urru", email = "" },
+    {name = "Turan Birol", email = "" },
+    {name = "David Vanderbilt", email = "" }
+]
+dependencies = [
+    "numpy",
+]
+ 
+[project.optional-dependencies]
+docs = [
+    "sphinx", "furo", "sphinx-autobuild"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pythmpg"]
