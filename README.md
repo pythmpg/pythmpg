@@ -1,12 +1,12 @@
-# **pythmpg**,  a Magnetic Point Group (MPG) tensor analysis toolkit
+# Magnetic point group (MPG) tensor analysis toolkit
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18672614-blue.svg)](https://doi.org/10.5281/zenodo.18672614)
 [![readthedocs status](https://app.readthedocs.org/projects/pythmpg/badge/?version=dev)](https://pythmpg.readthedocs.io/en/dev/) 
 
-This python package provides tools to enumerate symmetry properties of all
-122 magnetic point groups (MPGs) and to count the number of independent
-components of arbitrary-rank tensors under those symmetries, as
-classified by their Jahn symbol.
+The :mod:`pythmpg` package provides tools for enumeratinf symmetry
+properties of all 122 magnetic point groups (MPGs), and to count
+the number of independent components of arbitrary-rank tensors
+under those symmetries as classified by their Jahn symbol.
 
 A major feature of the package is its ability to export data in the
 form of a ``.csv`` file that can be used to build a spreadsheet
