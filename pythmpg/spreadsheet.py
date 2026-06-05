@@ -69,7 +69,7 @@ class Spreadsheet:
         ("Has PT*R", ""),
     ]
     defaults["scalar"] = [
-        ("Chiral", "e", "Has no P*R or PT*R"),
+        ("Struct chiral", "e", "Has no P*R or PT*R"),
         ("Colorless", "a", "Has no T*R or PT*R"),
         ("Axionic", "ae", "Has no P*R or T*R"),
     ]
