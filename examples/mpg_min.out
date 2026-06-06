@@ -1,0 +1,70 @@
+Dictionaries have been constructed in module mpg_dicts
+
+
+=============
+Header Report
+=============
+
+Header Sections: ['groups', 'symm', 'scalar', 'vector', 'tensor']
+------------------------------------------------------------
+groups:
+------------------------------------------------------------
+                                      Number                
+                                      Name                  
+                                      Order                 
+                        Jahn symbol   Type                  
+------------------------------------------------------------
+symm:
+------------------------------------------------------------
+  Has P                               
+  Has T                               
+  Has PT                              
+  Has P*R                             R = simple proper rot 
+  Has T*R                             
+  Has PT*R                            
+------------------------------------------------------------
+scalar:
+------------------------------------------------------------
+  Struct chiral         e             Has no P*R or PT*R    
+  Colorless             a             Has no T*R or PT*R    
+  Axionic               ae            Has no P*R or T*R     
+------------------------------------------------------------
+vector:
+------------------------------------------------------------
+  Polar                 V             
+  Ferro- magnetic       aeV           
+  Ferro- rotational     eV            
+  Ferro- toroidal       aV            
+------------------------------------------------------------
+tensor:
+------------------------------------------------------------
+  Piezoel               V[V2]         
+  Piezomag              ae[V2]V       
+------------------------------------------------------------
+
+====================
+Building Spreadsheet
+====================
+
+  Finished Jahn e
+  Finished Jahn a
+  Finished Jahn ae
+  Finished Jahn V
+  Finished Jahn aeV
+  Finished Jahn eV
+  Finished Jahn aV
+  Finished Jahn V[V2]
+  Finished Jahn ae[V2]V
+
+================
+Writing CSV File
+================
+
+Boolean CSV file mpg_min_bool.csv has been written
+
+================
+Writing CSV File
+================
+
+Numerical CSV file mpg_min_num.csv has been written
+

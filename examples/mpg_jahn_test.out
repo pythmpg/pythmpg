@@ -1,0 +1,158 @@
+Dictionaries have been constructed in module mpg_dicts
+
+
+=============
+Header Report
+=============
+
+Header Sections: ['groups', 'symm', 'test']
+------------------------------------------------------------
+groups:
+------------------------------------------------------------
+                                      Number                
+                                      Name                  
+                                      Order                 
+                        Jahn symbol   Type                  
+------------------------------------------------------------
+symm:
+------------------------------------------------------------
+  Has P                               
+  Has T                               
+  Has PT                              
+  Has P*R                             R = simple proper rot 
+  Has T*R                             
+  Has PT*R                            
+------------------------------------------------------------
+test:
+------------------------------------------------------------
+                        V             
+                        V2            
+                        [V2]          
+                        V[V2]         
+                        {V3}          
+                        [[V2][V2]]    
+                        [{V2}{V2}]    
+                        [{V2}{V2}{V2}]
+------------------------------------------------------------
+
+==================
+Jahn Symbol Report
+==================
+
+Parsing Jahn symbol V
+Parities = (0,0), bare Jahn = V
+  
+  V  ->  1
+  String '1' parsed to block list: [1]
+  Block List parsed to object list:  [0]
+  Operation specification for tensor of rank 1:
+  ('nosymm', [0])
+
+Parsing Jahn symbol V2
+Parities = (0,0), bare Jahn = V2
+  
+  V2  ->  2
+  String '2' parsed to block list: [2]
+  Block List parsed to object list:  [0, 1]
+  Operation specification for tensor of rank 2:
+  ('nosymm', [0, 1])
+
+Parsing Jahn symbol [V2]
+Parities = (0,0), bare Jahn = [V2]
+  
+  [V2]  ->  [2]
+  String '[2]' parsed to block list: ['[2]']
+    String '2' parsed to block list: [2]
+    Block List parsed to object list:  [0, 1]
+  Block List parsed to object list:  [('symm', [0, 1])]
+  Operation specification for tensor of rank 2:
+  ('symm', [0, 1])
+
+Parsing Jahn symbol V[V2]
+Parities = (0,0), bare Jahn = V[V2]
+  
+  V[V2]  ->  1[2]
+  String '1[2]' parsed to block list: [1, '[2]']
+    String '2' parsed to block list: [2]
+    Block List parsed to object list:  [1, 2]
+  Block List parsed to object list:  [0, ('symm', [1, 2])]
+  Operation specification for tensor of rank 3:
+  ('nosymm', [0, ('symm', [1, 2])])
+
+Parsing Jahn symbol {V3}
+Parities = (0,0), bare Jahn = {V3}
+  
+  {V3}  ->  {3}
+  String '{3}' parsed to block list: ['{3}']
+    String '3' parsed to block list: [3]
+    Block List parsed to object list:  [0, 1, 2]
+  Block List parsed to object list:  [('asymm', [0, 1, 2])]
+  Operation specification for tensor of rank 3:
+  ('asymm', [0, 1, 2])
+
+Parsing Jahn symbol [[V2][V2]]
+Parities = (0,0), bare Jahn = [[V2][V2]]
+  
+  [[V2][V2]]  ->  [[2][2]]
+  String '[[2][2]]' parsed to block list: ['[[2][2]]']
+    String '[2][2]' parsed to block list: ['[2]', '[2]']
+      String '2' parsed to block list: [2]
+      Block List parsed to object list:  [0, 1]
+      String '2' parsed to block list: [2]
+      Block List parsed to object list:  [2, 3]
+    Block List parsed to object list:  [('symm', [0, 1]), ('symm', [2, 3])]
+  Block List parsed to object list:  [('symm', [('symm', [0, 1]), ('symm', [2, 3])])]
+  Operation specification for tensor of rank 4:
+  ('symm', [('symm', [0, 1]), ('symm', [2, 3])])
+
+Parsing Jahn symbol [{V2}{V2}]
+Parities = (0,0), bare Jahn = [{V2}{V2}]
+  
+  [{V2}{V2}]  ->  [{2}{2}]
+  String '[{2}{2}]' parsed to block list: ['[{2}{2}]']
+    String '{2}{2}' parsed to block list: ['{2}', '{2}']
+      String '2' parsed to block list: [2]
+      Block List parsed to object list:  [0, 1]
+      String '2' parsed to block list: [2]
+      Block List parsed to object list:  [2, 3]
+    Block List parsed to object list:  [('asymm', [0, 1]), ('asymm', [2, 3])]
+  Block List parsed to object list:  [('symm', [('asymm', [0, 1]), ('asymm', [2, 3])])]
+  Operation specification for tensor of rank 4:
+  ('symm', [('asymm', [0, 1]), ('asymm', [2, 3])])
+
+Parsing Jahn symbol [{V2}{V2}{V2}]
+Parities = (0,0), bare Jahn = [{V2}{V2}{V2}]
+  
+  [{V2}{V2}{V2}]  ->  [{2}{2}{2}]
+  String '[{2}{2}{2}]' parsed to block list: ['[{2}{2}{2}]']
+    String '{2}{2}{2}' parsed to block list: ['{2}', '{2}', '{2}']
+      String '2' parsed to block list: [2]
+      Block List parsed to object list:  [0, 1]
+      String '2' parsed to block list: [2]
+      Block List parsed to object list:  [2, 3]
+      String '2' parsed to block list: [2]
+      Block List parsed to object list:  [4, 5]
+    Block List parsed to object list:  [('asymm', [0, 1]), ('asymm', [2, 3]), ('asymm', [4, 5])]
+  Block List parsed to object list:  [('symm', [('asymm', [0, 1]), ('asymm', [2, 3]), ('asymm', [4, 5])])]
+  Operation specification for tensor of rank 6:
+  ('symm', [('asymm', [0, 1]), ('asymm', [2, 3]), ('asymm', [4, 5])])
+
+====================
+Building Spreadsheet
+====================
+
+  Finished Jahn V
+  Finished Jahn V2
+  Finished Jahn [V2]
+  Finished Jahn V[V2]
+  Finished Jahn {V3}
+  Finished Jahn [[V2][V2]]
+  Finished Jahn [{V2}{V2}]
+  Finished Jahn [{V2}{V2}{V2}]
+
+================
+Writing CSV File
+================
+
+Numerical CSV file mpg_jahn_test.csv has been written
+
