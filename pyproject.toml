@@ -9,9 +9,10 @@ description = "MPG project"
 readme = "README.md"
 requires-python = ">=3.12"
 authors = [
-    {name = "Andrea Urru", email = "" },
-    {name = "Turan Birol", email = "" },
-    {name = "David Vanderbilt", email = "" }
+    {name = "Andrea Urru", email = "au168@physics.rutgers.edu" },
+    {name = "Turan Birol", email = "tbirol@umn.edu" },
+    {name = "Trey Cole", email = "bc889@physics.rutgers.edu" },
+    {name = "David Vanderbilt", email = "dhv@physics.rutgers.edu" }
 ]
 dependencies = [
     "numpy",
