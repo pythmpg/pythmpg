@@ -2,14 +2,18 @@
 Miscellaneous
 =============
 
+Does Trey's name still need to be added to the collaborator/author
+list in some places?
+
 Overleaf
 --------
 
 Finish the document on Overleaf.  Search for \Red and edit
 accordingly.
 
-Replace Fig. 1 with a snapshot of a fresh version (only change
-is that "Chiral" changes to "Struct chiral" in one header).
+Replace Fig. 1 with a snapshot of the latest version.  (I think
+the only noticeable change is from "Chiral" to "Struct chiral"
+in one header.)
 
 Check that instructions are correct for creating the Excel
 spreadsheet from the template.  Probably should do it in
