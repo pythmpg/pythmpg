@@ -1,7 +1,7 @@
 groups,groups,groups,groups,,symm,symm,symm,symm,symm,symm,,vector,vector,vector,vector,,tensor,tensor,tensor,tensor,tensor,tensor
 ,,,,,Has P,Has T,Has PT,Has P*R,Has T*R,Has PT*R,,Polar,Ferro- magnetic,Ferro- rotational,Ferro- toroidal,,Piezomag,Nat Optical Activ,Gyro birefring,Ordinary Hall,Spont Hall,Spont Ettings- hausen
 ,,,Jahn symbol,,,,,,,,,V,aeV,eV,aV,,ae[V2]V,{V2}V,a[V2]V,e{V2}V,a{V2},aV2
-Number,Name,Order,Type,,,,,R = simple proper rot,,,,,,,,,+ Lin mag- resistance,,,+ Ordinary Faraday,+ Spont Faraday,
+Number,Name,Order,Type,,,,,R = simple proper rot,,,,,,,,,& Lin mag- resistance,,,& Ordinary Faraday,& Spont Faraday,
 1.1.1,1,1,Colorless,,0,0,0,0,0,0,,3,3,3,3,,18,9,18,9,3,9
 1.2.2,1',2,Grey,,0,1,0,0,1,0,,3,0,3,0,,0,9,0,9,0,0
 2.1.3,-1,2,Colorless,,1,0,0,1,0,0,,0,3,3,0,,18,0,0,9,3,9

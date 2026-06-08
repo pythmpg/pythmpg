@@ -33,11 +33,11 @@ my_sheet.delete('scalar')
 
 # Add 'tensor' entries
 tensor_section = [
-      ('Piezomag','ae[V2]V','+ Lin mag- resistance'),
+      ('Piezomag','ae[V2]V','& Lin mag- resistance'),
       ('Nat Optical Activ','{V2}V'),
       ('Gyro birefring','a[V2]V'),
-      ('Ordinary Hall','e{V2}V','+ Ordinary Faraday'),
-      ('Spont Hall','a{V2}','+ Spont Faraday'),
+      ('Ordinary Hall','e{V2}V','& Ordinary Faraday'),
+      ('Spont Hall','a{V2}','& Spont Faraday'),
       ('Spont Ettings- hausen','aV2')]
 my_sheet.add('tensor',tensor_section)
 

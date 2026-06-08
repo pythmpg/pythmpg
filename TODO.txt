@@ -1,0 +1,51 @@
+=============
+Miscellaneous
+=============
+
+Overleaf
+--------
+
+Finish the document on Overleaf.  Search for \Red and edit
+accordingly.
+
+Replace Fig. 1 with a snapshot of a fresh version (only change
+is that "Chiral" changes to "Struct chiral" in one header).
+
+Check that instructions are correct for creating the Excel
+spreadsheet from the template.  Probably should do it in
+LibreOffice too, and add hints if the instructions are a bit
+different for that.
+
+Install the PDF in the git repository.  Where should it go?
+Maybe below docs/ somewhere, so that the API has access to
+it?
+
+Zenodo
+------
+
+What should be stored at Zenodo?  Is it usual to store a .zip of
+the entire git repository?  If so, it seems to me we also want to
+have a .zip similar to the one that is already there, with just
+the spreadsheets and the User Guide, for users who don't need to
+use the python code.
+
+ReadTheDocs
+-----------
+
+Needs to be set up
+
+==============
+Git Repository
+==============
+
+Examples directory
+------------------
+
+Make sure everything is consistent.
+
+Double-check that the .xlsx spreadsheets show the same data
+as before.
+
+Should this directory be deeper in the file tree, under
+docs/ for example, so that the API knows about it?
+
