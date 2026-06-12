@@ -3,10 +3,10 @@ message: >
   If you use this software, please cite it using the metadata below.
 title: "Python Magnetic Point Group (PythMPG)"
 authors:
-  - family-names: Andrea
-    given-names: Urru
-  - family-names: Turan
-    given-names: Birol
+  - family-names: Urru
+    given-names: Andrea
+  - family-names: Birol
+    given-names: Turan
   - family-names: Cole
     given-names: Trey
   - family-names: Vanderbilt
