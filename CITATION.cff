@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: >
+  If you use this software, please cite it using the metadata below.
+title: "Python Magnetic Point Group (PythMPG)"
+authors:
+  - family-names: Andrea
+    given-names: Urru
+  - family-names: Turan
+    given-names: Birol
+  - family-names: Cole
+    given-names: Trey
+  - family-names: Vanderbilt
+    given-names: David
+date-released: 2026-06-20
+version: "1.0.0"
+doi: 10.5281/zenodo.18672614
+url: https://zenodo.org/records/18672614
+repository: https://github.com/pythmpg/pythmpg
+license: GPL-3.0-or-later
+type: software
