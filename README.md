@@ -20,3 +20,35 @@ without the need to access the python codes themselves.
 - **Documentation**: https://pythmpg.readthedocs.io/en/latest/
 - **Source**: https://github.com/pythmpg/pythmpg
 - **Report Issues**: https://github.com/pythmpg/pythmpg/issues
+
+## Installation
+
+PythMPG is available ... ??????????
+
+To install from source in editable mode:
+
+```bash
+git clone https://github.com/pythmpg/pythmpg.git
+cd pythmpg
+pip install -e .
+```
+
+PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and the core dependency:
+- numpy ≥ 2.0
+
+## Citation
+
+If you use the code in your paper, please cite us
+
+```bibtex
+@software{Urru_Python_Magnetic_Point_2026,
+author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
+doi = {10.5281/zenodo.18672614},
+license = {GPL-3.0-or-later},
+month = jun,
+title = {{Python Magnetic Point Group (PythMPG)}},
+url = {https://zenodo.org/records/18672614},
+version = {1.0.0},
+year = {2026}
+}
+```

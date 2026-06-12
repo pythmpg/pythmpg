@@ -8,21 +8,20 @@ list in some places?
 Overleaf
 --------
 
-Finish the document on Overleaf.  Search for \Red and edit
-accordingly.
+Finish the document on Overleaf.  I think the main item that
+is missing is the installation instructions, but check over
+everything else.
 
-Replace Fig. 1 with a snapshot of the latest version.  (I think
-the only noticeable change is from "Chiral" to "Struct chiral"
-in one header.)
+Fig. 1 has been replaced with a snapshot of the latest version,
+and Fig. 2 shows the same after some sorting operations.  OK
+now I think.
 
-Check that instructions are correct for creating the Excel
-spreadsheet from the template.  Probably should do it in
-LibreOffice too, and add hints if the instructions are a bit
-different for that.
+Instructions for creating the Excel spreadsheet from the template
+and .cvs file are now in place, but add comments for the parallel
+process using LibreOffice?
 
 Install the PDF in the git repository.  Where should it go?
-Maybe below docs/ somewhere, so that the API has access to
-it?
+Maybe below docs/ somewhere, so that the API has access to it?
 
 Zenodo
 ------
@@ -36,7 +35,9 @@ use the python code.
 ReadTheDocs
 -----------
 
-Needs to be set up
+I (DV) set up an account linked to my Github account, but I
+can't created the RTD site for pythmpg until the git repository
+is public.
 
 ==============
 Git Repository
@@ -53,3 +54,9 @@ as before.
 Should this directory be deeper in the file tree, under
 docs/ for example, so that the API knows about it?
 
+
+=============================
+Last-minute on day of release
+=============================
+
+Adjust the date in the CITATION.cff file.
