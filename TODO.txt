@@ -54,6 +54,19 @@ as before.
 Should this directory be deeper in the file tree, under
 docs/ for example, so that the API knows about it?
 
+Notes directory
+---------------
+
+Currently there is a notes/ directory containing DEV.md that
+has been copied verbatim from the pythtb repo.  Just remove it?
+Or modify/simplify it?
+
+User guide
+----------
+
+The PDF version of the User Guide from Overleaf needs to go
+somewhere.  Just place it as MPG-User-Guide.pdf at the top
+level?  Or should it go deeper in the file tree?
 
 =============================
 Last-minute on day of release
