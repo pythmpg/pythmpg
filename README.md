@@ -1,7 +1,7 @@
 # Magnetic point group (MPG) tensor analysis toolkit
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18672614-blue.svg)](https://doi.org/10.5281/zenodo.18672614)
-[![readthedocs status](https://app.readthedocs.org/projects/pythmpg/badge/?version=dev)](https://pythmpg.readthedocs.io/en/dev/) 
+[![readthedocs status](https://app.readthedocs.org/projects/pythmpg/badge/?version=dev)](https://pythmpg.readthedocs.io/en/latest/) 
 
 The ``pythmpg`` package provides tools for enumerating symmetry
 properties of all 122 magnetic point groups (MPGs), and for counting
