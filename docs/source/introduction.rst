@@ -23,14 +23,13 @@ What belongs here vs. on landing page?
 Examples
 --------
 
-
 Minimal workflow using all defaults::
 
    from pythmpg import Spreadsheet
    sheet = Spreadsheet()
    sheet.header_report()          # optional: inspect column layout
    sheet.build_csv()              # compute tensor counts for every MPG
-   sheet.write_csv(file='mpg.csv')
+   sheet.write_csv('mpg.csv')
 
 Query symmetry info for a subset of groups::
 
