@@ -22,6 +22,10 @@ dependencies = [
 docs = [
     "sphinx", "furo", "sphinx-autobuild"
 ]
+tests = ["pytest"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["pythmpg"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
