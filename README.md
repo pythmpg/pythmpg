@@ -11,10 +11,10 @@ under those symmetries as classified by their Jahn symbol.
 A major feature of the package is its ability to export data in the
 form of a ``.csv`` file that can be used to build a spreadsheet
 capable of screening for MPGs based on whether they have
-certain symmetries or support specied tensor properties.  A broader
+certain symmetries or support specified tensor properties. A broader
 community of users can then use standard spreadsheet tools, such
 as sorting on columns and hiding columns and rows, to achieve similar ends,
-without the need to access the python codes themselves.
+without the need to access the Python codes themselves.
 
 ## Resources
 - **Source**: https://github.com/pythmpg/pythmpg
@@ -24,8 +24,11 @@ without the need to access the python codes themselves.
 
 ## Installation
 
-PythMPG is available ... ??????????
+PythMPG is available through PyPI.
 
+```bash
+pip install PythMPG
+```
 To install from source in editable mode:
 
 ```bash
