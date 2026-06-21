@@ -28,4 +28,5 @@ without the need to access the python codes themselves.
    :caption: Contents
 
    introduction
+   user_guide
    api
