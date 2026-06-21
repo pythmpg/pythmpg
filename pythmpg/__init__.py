@@ -51,11 +51,21 @@ parse_jahn
     instructions for arbitrary-rank tensors.
 """
 
+from importlib.metadata import PackageNotFoundError, version as _version
+
 from pythmpg.spreadsheet import Spreadsheet
 from pythmpg.mpg_tools import get_mpg_info, get_num_indep
+
+try:
+    # Single source of truth: the version baked into the installed package
+    # metadata by hatch-vcs, which in turn derives it from the git tag.
+    __version__ = _version("pythmpg")
+except PackageNotFoundError:  # running from a source tree without an install
+    __version__ = "0.0.0+unknown"
 
 __all__ = [
     "Spreadsheet",
     "get_mpg_info",
     "get_num_indep",
+    "__version__",
 ]

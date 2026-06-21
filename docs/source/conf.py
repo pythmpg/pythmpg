@@ -14,7 +14,10 @@ sys.path.insert(0, str(Path(__file__).parents[2]))
 project = 'PythMPG'
 copyright = '2026, Andrea Urru, David Vanderbilt'
 author = 'Andrea Urru, Turan Birol, Trey Cole, David Vanderbilt'
-release = '1.0.0'
+
+# Pull the version from the package (single source of truth: the git tag).
+from pythmpg import __version__ as release
+version = release
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
