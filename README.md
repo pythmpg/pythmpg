@@ -27,7 +27,7 @@ without the need to access the Python codes themselves.
 PythMPG is available through PyPI.
 
 ```bash
-pip install PythMPG
+pip install pythmpg
 ```
 To install from source in editable mode:
 
