@@ -2,27 +2,40 @@
 Introduction
 ============
 
-MENTION THE USER GUIDE.  CLARIFY WHAT TO DO IF YOU ONLY WANT
-THE SPREADSHEETS.
-ADD LINKS TO THE GIT REPOSITORY AND THE ZENODO RECORD.
+This documentation describes the ``pythmpg`` software that can be used
+to create user-customized spreadsheets as part of the
+``Python MPG`` project.  See the ``User Guide`` in the menu
+at left for an overview of the project.  Note that some
+pre-constructed spreadsheets are provided at the
+`Zenodo Pyth-MPG site <https://zenodo.org/records/18672613>`_;
+these can be used without the need to reference the software
+described here.
+
+The source for this documentation and the ``pythmpg`` software
+is the `pythmpg <https://github.com/pythmpg/pythmpg/>`_ GitHub
+repository.
+
+Example Script for Spreadsheet Creation
+---------------------------------------
 
 The top-level entry point for most users is the :class:`~pythmpg.Spreadsheet`
 class, which drives construction and export of a ``.csv`` spreadsheet
 whose rows and columns correspond to magnetic point groups (MPGs) and
-symmetry-allowed properties respectively.
-The two functions :func:`~pythmpg.get_mpg_info` and :func:`~pythmpg.get_num_indep` from
-the :mod:`~pythmpg.mpg_tools` module are also exported for direct use.
-
-Example Scripts
----------------
-
-Minimal workflow using all defaults::
+symmetry-allowed properties respectively.  Here is a
+minimal workflow using all defaults::
 
    from pythmpg import Spreadsheet
    sheet = Spreadsheet()
    sheet.header_report()          # optional: inspect column layout
    sheet.build_csv()              # compute tensor counts for every MPG
    sheet.write_csv('mpg.csv')
+
+Example Scripts for Direct Access to Symmetry Information
+---------------------------------------------------------
+
+Two functions :func:`~pythmpg.get_mpg_info` and
+:func:`~pythmpg.get_num_indep` from the :mod:`~pythmpg.mpg_tools`
+module are also exported for direct external use.
 
 Query symmetry info for a subset of groups::
 
@@ -78,7 +91,7 @@ PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and numpy ≥ 2.0
 Citation
 --------
 
-If you use the code in your paper, please cite us.  Here is the
+If you use the code in your paper, please cite us.  Here is a
 ``bibtex`` entry::
 
    @software{Urru_Python_Magnetic_Point_2026,
@@ -96,6 +109,9 @@ License
 -------
 
 This software is released under NU General Public License v3.0.
+
+.. rst-class:: small-text
+
 Permissions of this strong copyleft license are conditioned
 on making available complete source code of licensed works and
 modifications, which include larger works using a licensed work,
