@@ -63,32 +63,31 @@ Available Modules
 Installation
 ------------
 
-PythMPG is available through PyPI.
+PythMPG is available through PyPI::
 
-``pip install pythmpg``
+   pip install pythmpg
 
-To install from source in editable mode:
+To install from source in editable mode::
 
-``git clone https://github.com/pythmpg/pythmpg.git``
-``cd pythmpg``
-``pip install -e .``
+   git clone https://github.com/pythmpg/pythmpg.git
+   cd pythmpg
+   pip install -e .
 
 PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and numpy ≥ 2.0
 
 License
 -------
 
-If you use the code in your paper, please cite us using this
-``bibtex`` entry:
+If you use the code in your paper, please cite us.  Here is the
+``bibtex`` entry::
 
-``@software{Urru_Python_Magnetic_Point_2026,
-author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
-doi = {10.5281/zenodo.18672614},
-license = {GPL-3.0-or-later},
-month = jun,
-title = {{Python Magnetic Point Group (PythMPG)}},
-url = {https://zenodo.org/records/18672614},
-version = {1.0.0},
-year = {2026}``
-}
-```
+   @software{Urru_Python_Magnetic_Point_2026,
+   author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
+   doi = {10.5281/zenodo.18672614},
+   license = {GPL-3.0-or-later},
+   month = jun,
+   title = {{Python Magnetic Point Group (PythMPG)}},
+   url = {https://zenodo.org/records/18672614},
+   version = {1.0.0},
+   year = {2026}
+   }
