@@ -10,5 +10,11 @@ The following PDF contains the complete user guide for the PythMPG package.
 
 .. raw:: html
 
-   <iframe src="_static/Pyth-MPG_User_Guide.pdf" width="100%" height="800px">
-   </iframe>
+   <object data="_static/Pyth-MPG_User_Guide.pdf" type="application/pdf"
+           width="100%" height="800px">
+       <p>
+           Your browser is set to download PDFs rather than display them.
+           You can <a href="_static/Pyth-MPG_User_Guide.pdf" target="_blank">
+           open the user guide in a new tab</a> instead.
+       </p>
+   </object>
