@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).parents[2]))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'PythMPG'
-copyright = '2026, Andrea Urru, David Vanderbilt'
+copyright = '2026, Andrea Urru, Turan Birol, Trey Cole, David Vanderbilt'
 author = 'Andrea Urru, Turan Birol, Trey Cole, David Vanderbilt'
 
 # Pull the version from the package (single source of truth: the git tag).
