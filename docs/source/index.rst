@@ -27,6 +27,7 @@ without the need to access the python codes themselves.
    :hidden:
    :caption: Contents
 
+   self
    introduction
    user_guide
    api

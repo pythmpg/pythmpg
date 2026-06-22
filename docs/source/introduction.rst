@@ -2,6 +2,10 @@
 Introduction
 ============
 
+MENTION THE USER GUIDE.  CLARIFY WHAT TO DO IF YOU ONLY WANT
+THE SPREADSHEETS.
+ADD LINKS TO THE GIT REPOSITORY AND THE ZENODO RECORD.
+
 The top-level entry point for most users is the :class:`~pythmpg.Spreadsheet`
 class, which drives construction and export of a ``.csv`` spreadsheet
 whose rows and columns correspond to magnetic point groups (MPGs) and
@@ -9,19 +13,8 @@ symmetry-allowed properties respectively.
 The two functions :func:`~pythmpg.get_mpg_info` and :func:`~pythmpg.get_num_indep` from
 the :mod:`~pythmpg.mpg_tools` module are also exported for direct use.
 
-To Do (For Developers)
-======================
-
-Add sections for
-
-- Installation?
-- License?
-- Links to Zenodo and ReadTheDocs?
-
-What belongs here vs. on landing page?
-
-Examples
---------
+Examples of scripts accessing PythMPG capabilities
+--------------------------------------------------
 
 Minimal workflow using all defaults::
 
@@ -66,3 +59,40 @@ Available Modules
 :mod:`~pythmpg.parse_jahn`
    Parser for Jahn symbols that encodes index-symmetrization
    instructions for arbitrary-rank tensors.
+
+Installation Instructions
+-------------------------
+
+PythMPG is available through PyPI.
+
+```bash
+pip install pythmpg
+```
+To install from source in editable mode:
+
+```bash
+git clone https://github.com/pythmpg/pythmpg.git
+cd pythmpg
+pip install -e .
+```
+
+PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and the core dependency:
+- numpy ≥ 2.0
+
+License
+-------
+
+If you use the code in your paper, please cite us
+
+```bibtex
+@software{Urru_Python_Magnetic_Point_2026,
+author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
+doi = {10.5281/zenodo.18672614},
+license = {GPL-3.0-or-later},
+month = jun,
+title = {{Python Magnetic Point Group (PythMPG)}},
+url = {https://zenodo.org/records/18672614},
+version = {1.0.0},
+year = {2026}
+}
+```
