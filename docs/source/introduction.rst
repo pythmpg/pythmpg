@@ -4,16 +4,15 @@ Introduction
 
 This documentation describes the ``pythmpg`` software that can be used
 to create user-customized spreadsheets as part of the
-``Python MPG`` project.  See the ``User Guide`` in the menu
-at left for an overview of the project.  Note that some
+``Python MPG`` project.  See the :doc:`user_guide`
+for an overview of the project.  Note that some
 pre-constructed spreadsheets are provided at the
 `Zenodo Pyth-MPG site <https://zenodo.org/records/18672613>`_;
 these can be used without the need to reference the software
 described here.
 
-The source for this documentation and the ``pythmpg`` software
-is the `pythmpg <https://github.com/pythmpg/pythmpg/>`_ GitHub
-repository.
+The source for this documentation and the ``pythmpg`` software package
+is the `pythmpg GitHub repository <https://github.com/pythmpg/pythmpg/>`_.
 
 Example Script for Spreadsheet Creation
 ---------------------------------------
@@ -30,12 +29,14 @@ minimal workflow using all defaults::
    sheet.build_csv()              # compute tensor counts for every MPG
    sheet.write_csv('mpg.csv')
 
-Example Scripts for Direct Access to Symmetry Information
----------------------------------------------------------
+Example Scripts for Direct Access
+---------------------------------
 
-Two functions :func:`~pythmpg.get_mpg_info` and
+Direct access to the symmetry information, without reference to
+any spreadsheet structure, is also provided by
+two functions :func:`~pythmpg.get_mpg_info` and
 :func:`~pythmpg.get_num_indep` from the :mod:`~pythmpg.mpg_tools`
-module are also exported for direct external use.
+module.
 
 Query symmetry info for a subset of groups::
 
@@ -108,12 +109,5 @@ If you use the code in your paper, please cite us.  Here is a
 License
 -------
 
-This software is released under NU General Public License v3.0.
-
-.. rst-class:: small-text
-
-Permissions of this strong copyleft license are conditioned
-on making available complete source code of licensed works and
-modifications, which include larger works using a licensed work,
-under the same license. Copyright and license notices must be
-preserved. Contributors provide an express grant of patent rights.
+This software is released under the
+`GNU General Public License v3.0<https://www.gnu.org/licenses/gpl-3.0.html>`_.
