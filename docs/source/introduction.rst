@@ -52,8 +52,8 @@ Count independent components of a rank-2 symmetric tensor::
    count_dict
    # {'[V2]': [6, 4, 2]}
 
-Available Modules
------------------
+Modules in the Package
+----------------------
 
 :mod:`~pythmpg.spreadsheet`
    Defines :class:`~pythmpg.Spreadsheet`, the primary user-facing class.
@@ -110,4 +110,4 @@ License
 -------
 
 This software is released under the
-`GNU General Public License v3.0<https://www.gnu.org/licenses/gpl-3.0.html>`_.
+`GNU General Public License v3.0 <https://www.gnu.org/licenses/gpl-3.0.html>`_.
