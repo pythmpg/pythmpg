@@ -13,8 +13,8 @@ symmetry-allowed properties respectively.
 The two functions :func:`~pythmpg.get_mpg_info` and :func:`~pythmpg.get_num_indep` from
 the :mod:`~pythmpg.mpg_tools` module are also exported for direct use.
 
-Examples of scripts accessing PythMPG capabilities
---------------------------------------------------
+Example Scripts
+---------------
 
 Minimal workflow using all defaults::
 
@@ -60,32 +60,28 @@ Available Modules
    Parser for Jahn symbols that encodes index-symmetrization
    instructions for arbitrary-rank tensors.
 
-Installation Instructions
--------------------------
+Installation
+------------
 
 PythMPG is available through PyPI.
 
-```bash
-pip install pythmpg
-```
+``pip install pythmpg``
+
 To install from source in editable mode:
 
-```bash
-git clone https://github.com/pythmpg/pythmpg.git
-cd pythmpg
-pip install -e .
-```
+``git clone https://github.com/pythmpg/pythmpg.git``
+``cd pythmpg``
+``pip install -e .``
 
-PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and the core dependency:
-- numpy ≥ 2.0
+PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and numpy ≥ 2.0
 
 License
 -------
 
-If you use the code in your paper, please cite us
+If you use the code in your paper, please cite us using this
+``bibtex`` entry:
 
-```bibtex
-@software{Urru_Python_Magnetic_Point_2026,
+``@software{Urru_Python_Magnetic_Point_2026,
 author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
 doi = {10.5281/zenodo.18672614},
 license = {GPL-3.0-or-later},
@@ -93,6 +89,6 @@ month = jun,
 title = {{Python Magnetic Point Group (PythMPG)}},
 url = {https://zenodo.org/records/18672614},
 version = {1.0.0},
-year = {2026}
+year = {2026}``
 }
 ```
