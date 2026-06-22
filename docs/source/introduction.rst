@@ -97,11 +97,11 @@ If you use the code in your paper, please cite us.  Here is a
 
    @software{Urru_Python_Magnetic_Point_2026,
    author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
-   doi = {10.5281/zenodo.18672614},
+   doi = {10.5281/zenodo.18672613},
    license = {GPL-3.0-or-later},
    month = jun,
    title = {{Python Magnetic Point Group (PythMPG)}},
-   url = {https://zenodo.org/records/18672614},
+   url = {https://zenodo.org/records/18672613},
    version = {1.0.0},
    year = {2026}
    }

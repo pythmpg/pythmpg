@@ -1,6 +1,6 @@
 # Magnetic point group (MPG) tensor analysis toolkit
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18672614-blue.svg)](https://doi.org/10.5281/zenodo.18672614)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18672613-blue.svg)](https://doi.org/10.5281/zenodo.18672613)
 [![readthedocs status](https://app.readthedocs.org/projects/pythmpg/badge/?version=latest)](https://pythmpg.readthedocs.io/en/latest/) 
 
 The ``pythmpg`` package provides tools for enumerating symmetry
@@ -19,8 +19,7 @@ without the need to access the Python codes themselves.
 ## Resources
 - **Source**: https://github.com/pythmpg/pythmpg
 - **Documentation**: https://pythmpg.readthedocs.io/en/latest/
-- **Report Issues**: https://github.com/pythmpg/pythmpg/issues
-- **Zenodo Repository**: https://zenodo.org/records/12721315
+- **Zenodo Repository**: https://zenodo.org/records/18672613
 
 ## Installation
 
@@ -47,11 +46,11 @@ If you use the code in your paper, please cite us
 ```bibtex
 @software{Urru_Python_Magnetic_Point_2026,
 author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
-doi = {10.5281/zenodo.18672614},
+doi = {10.5281/zenodo.18672613},
 license = {GPL-3.0-or-later},
 month = jun,
 title = {{Python Magnetic Point Group (PythMPG)}},
-url = {https://zenodo.org/records/18672614},
+url = {https://zenodo.org/records/18672613},
 version = {1.0.0},
 year = {2026}
 }
