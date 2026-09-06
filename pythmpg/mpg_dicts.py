@@ -30,6 +30,9 @@ mpg_dict : dict
     or ``'cub'``, ``generators`` is a list of polycyclic generator
     3-tuples, and ``gen_orders`` is a list of their corresponding
     orders (int).
+mpg_alt_dict : dict
+    Maps alternative MPG names (Hermann-Mauguin short names) to
+    the standard names used in ``mpg_dict``.
 bns_dict : dict
     Maps each MPG name (str) to its BNS (Belov-Neronova-Smirnova)
     serial number (str).
@@ -222,6 +225,69 @@ def get_mpg_dict():
         mpg_dict[mpg] = (frame, generators, gen_orders)
 
     return mpg_dict
+
+
+def get_mpg_alt_dict():
+    """
+    Construct the dictionary of alternative MPG names.
+
+    Alternative Hermann-Mauguin short names sometimes seen in
+    the literature, with their mappings to the standard mpg names
+    used in ``mpg_dict``.
+
+    Returns
+    -------
+    mpg_alt_dict : dict
+        Maps each alternative MPG name (str) to a standard name (str).
+    """
+
+    mpg_alt_dict = {
+        # Orthorhombic
+        "22'2'" : "2'2'2" ,
+        "2'22'" : "2'2'2" ,
+        "2mm" : "mm2" ,
+        "m2m" : "mm2" ,
+        "2mm1'" : "mm21'" ,
+        "m2m1'" : "mm21'" ,
+        "m'2'm" : "m'm2'" ,
+        "mm'2'" : "m'm2'" ,
+        "m2'm'" : "m'm2'" ,
+        "2'mm'" : "m'm2'" ,
+        "2'm'm" : "m'm2'" ,
+        "2m'm'" : "m'm'2" ,
+        "m'2m'" : "m'm'2" ,
+        "mm'm" : "m'mm" ,
+        "mmm'" : "m'mm" ,
+        "m'mm'" : "m'm'm" ,
+        "mm'm'" : "m'm'm" ,
+        # Tetragonal
+        "4'2'2" : "4'22'" ,
+        "4'mm'" : "4'm'm" ,
+        "-4'm2'" : "-4'2'm" ,
+        "-4'm'2" : "-4'2m'" ,
+        "-4m'2'" : "-42'm'" ,
+        "4'/mmm'" : "4'/mm'm" ,
+        "4'/m'mm'" : "4'/m'm'm" ,
+        # Hexagonal
+        "6'2'2" : "6'22'" ,
+        "6'm'm" : "6'mm'" ,
+        "-62m" : "-6m2" ,
+        "-62m1'" : "-6m21'" ,
+        "-6'2m'" : "-6'm'2" ,
+        "-6'2'm" : "-6'm2'" ,
+        "-62'm'" : "-6m'2'" ,
+        "6'/m'm'm" : "6'/mmm'" ,
+        "6/m'm'm" : "6'/m'mm'" ,
+        # Cubic
+        "m3" : "m-3" ,
+        "m31'" : "m-31'" ,
+        "m'3" : "m'-3'" ,
+        "m3m" : "m-3m" ,
+        "m3m1'" : "m-3m1'" ,
+        "m'3m'" : "m'-3'm'" ,
+    }
+
+    return mpg_alt_dict
 
 
 def get_bns_dict():
@@ -545,6 +611,9 @@ cub_rot_dict, cub_table_dict = get_cub_table(if_print=False)
 
 # Construct the primary dictionary 'mpg_dict'
 mpg_dict = get_mpg_dict()
+
+# Construct the alternative dictionary 'mpg_alt_dict'
+mpg_alt_dict = get_mpg_alt_dict()
 
 # Also construct bns_dict
 bns_dict = get_bns_dict()

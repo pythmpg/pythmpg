@@ -82,6 +82,9 @@ def parse_jahn_symbol(jahn, if_print=False):
         return jahn_dict[jahn]
 
     # Preliminary clean-up, e.g., 'V[V2V2]V' -> '1[22]1'
+    if "*" in jahn:
+        print(f"  Warning: '*' removed from Jahn symbol {jahn}")
+        jahn = jahn.replace("*","")
     if not set(jahn).issubset(valid_chars):
         jprint(f"\n  {jahn}  ->")
         print(f"\n  PARSING ERROR: Illegal characters in Jahn symbol {jahn}")

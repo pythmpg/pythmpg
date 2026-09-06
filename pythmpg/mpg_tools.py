@@ -22,7 +22,7 @@ from copy import copy, deepcopy
 
 from pythmpg.mpg_dicts import hex_rot_dict, cub_rot_dict
 from pythmpg.mpg_dicts import hex_table_dict, cub_table_dict
-from pythmpg.mpg_dicts import mpg_dict, bns_dict
+from pythmpg.mpg_dicts import mpg_dict, mpg_alt_dict, bns_dict
 from pythmpg.parse_jahn import parse_jahn_symbol, jahn_rank
 
 rot_dict = {}
@@ -36,10 +36,10 @@ table_dict = {}
 
 def get_mpg_info(mpg_list="All"):
     """
-    Return and basic information for a list of MPGs.
+    Return basic information for a list of MPGs.
 
-    For each MPG, determines the group order and classification as
-    'Grey', 'Black-White', or 'Colorless', and reports the presence
+    For each MPG, determine the group order and classification as
+    'Grey', 'Black-White', or 'Colorless', and report the presence
     or absence of six key symmetries (P, T, PT, PR, TR, PTR).
 
     Parameters
@@ -70,8 +70,12 @@ def get_mpg_info(mpg_list="All"):
     global rot_dict, table_dict
 
     # By default, works on all 122 MPGs
-    if mpg_list == "All":
+    all_mpgs = (mpg_list == "All")
+    if all_mpgs:
         mpg_list = list(mpg_dict)
+    else:
+        # For user-supplied names, translate to standard names if needed
+        mpg_list = [get_std_name(name) for name in mpg_list]
 
     # initialize lists
     order_list = []
@@ -129,7 +133,11 @@ def get_mpg_info(mpg_list="All"):
         group_type_list.append(group_type)
 
     # Make bns_list
-    bns_list = [bns_dict[x] for x in mpg_list]
+    if all_mpgs:
+        bns_list = [bns_dict[x] for x in mpg_list]
+    else:
+        # not meaningful in this case
+        bns_list = ['']*len(mpg_list)
 
     # Pack lists into dictionary
     mpg_info_dict = {}
@@ -143,11 +151,12 @@ def get_mpg_info(mpg_list="All"):
 
 def get_num_indep(jahn_list, mpg_list="All"):
     """
-    Return the number of independent tensor components for Jahn symbol / MPG pairs.
+    Return the number of independent tensor components for each
+    Jahn symbol / MPG pair.
 
-    For each Jahn symbol, parses the symbol to obtain index-symmetrization
-    instructions, constructs a basis of symmetrized orthonormal tensors,
-    and then further reduces that basis under each MPG's symmetry
+    For each Jahn symbol, parse the symbol to obtain index-symmetrization
+    instructions, construct a basis of symmetrized orthonormal tensors,
+    and then further reduce that basis under each MPG's symmetry
     operations to count the remaining independent components.
 
     Parameters
@@ -173,6 +182,9 @@ def get_num_indep(jahn_list, mpg_list="All"):
     # By default, works on all 122 MPGs
     if mpg_list == "All":
         mpg_list = list(mpg_dict)
+    else:
+        # For user-supplied names, translate to standard names if needed
+        mpg_list = [get_std_name(name) for name in mpg_list]
 
     # Initialize dictionary to be returned
     num_indep_dict = {}
@@ -267,6 +279,46 @@ def get_num_indep(jahn_list, mpg_list="All"):
 # --------------------------------------------------------------
 # Helper functions intended as local
 # --------------------------------------------------------------
+
+def get_std_name(mpg_name):
+    """
+    Test if an input MPG name is one of the 122 standard Hermann-Mauguin
+    short names used by this package, and translate to the standard name
+    if possible.
+
+    Parameters
+    ----------
+    mpg_name : str
+        User-supplied MPG name
+
+    Returns
+    -------
+    std_name : str
+        Standard MPG name
+    """
+
+    # Check if mpg_name is already a standard name
+    if mpg_name in mpg_dict:
+        return mpg_name
+
+    # Remove final ".1" and other appearances of "." if present
+    std_name = mpg_name.removesuffix(".1").replace(".","")
+    if std_name in mpg_dict:
+        # Print warning
+        print(f"Warning: MPG input name {mpg_name} changed to standard "
+              f"name {std_name}")
+        return std_name
+
+    # Look in the mpg_alt_dict dictionary
+    try:
+        std_name = mpg_alt_dict[mpg_name]
+    except KeyError:
+        raise ValueError(f"Input MPG name '{mpg_name}' not found in "
+                         "standard or alternative name dictionaries")
+    # If found, print warning
+    print(f"Warning: MPG input name {mpg_name} changed to standard "
+          f"name {std_name}")
+    return std_name
 
 
 def permutation_sign(p):
