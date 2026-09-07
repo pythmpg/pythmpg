@@ -2,7 +2,7 @@
 Construct dictionaries describing the operations and structure
 of magnetic point groups.
 
-Upon being imported, this module constructs six dictionaries and makes
+Upon being imported, this module constructs seven dictionaries and makes
 them available to external modules as module-level attributes.  The
 first four are built from functions imported from ``pg_elements``; the
 remaining two are built by :func:`get_mpg_dict` and
