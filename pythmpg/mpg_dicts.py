@@ -5,10 +5,11 @@ of magnetic point groups.
 Upon being imported, this module constructs seven dictionaries and makes
 them available to external modules as module-level attributes.  The
 first four are built from functions imported from ``pg_elements``; the
-remaining two are built by :func:`get_mpg_dict` and
-:func:`get_bns_dict`, which are called at module level at the end of
-this file.  Following normal Python import rules, these module-level
-statements execute once per session on first import.
+remaining ones are built by functions :func:`get_mpg_dict`,
+:func"`get_mpg_alt_dict`, and :func:`get_bns_dict`, which are
+called at module level at the end of this file.  Following normal
+Python import rules, these module-level statements execute once
+per session on first import.
 
 Attributes
 ----------
