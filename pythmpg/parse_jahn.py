@@ -83,7 +83,7 @@ def parse_jahn_symbol(jahn, if_print=False):
 
     # Check for valid characters
     if "*" in jahn:
-        print(f"\n  ERROR: Use of "*" not supported in Jahn symbol {jahn}")
+        print(f"\n  ERROR: Use of '*' not supported in Jahn symbol {jahn}")
         jahn_dict[jahn] = None
         return None
     if not set(jahn).issubset(valid_chars):
