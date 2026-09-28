@@ -20,7 +20,7 @@ dependencies = [
  
 [project.optional-dependencies]
 docs = [
-    "sphinx", "furo", "sphinx-autobuild"
+    "sphinx", "furo", "sphinx-autobuild", "myst-parser"
 ]
 tests = ["pytest"]
 

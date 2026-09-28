@@ -6,7 +6,10 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parents[2]))
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+import pythmpg
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -14,25 +17,30 @@ sys.path.insert(0, str(Path(__file__).parents[2]))
 project = 'PythMPG'
 copyright = '2026, Andrea Urru, Turan Birol, Trey Cole, David Vanderbilt'
 author = 'Andrea Urru, Turan Birol, Trey Cole, David Vanderbilt'
-
-# Pull the version from the package (single source of truth: the git tag).
-from pythmpg import __version__ as release
-version = release
+version = pythmpg.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+master_doc = 'index' # The master toctree document.
 
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "sphinx.ext.autosummary",
     "sphinx.ext.viewcode",
+    "myst-parser",
 ]
 
 napoleon_numpy_docstring = True
 
 templates_path = ['_templates']
 exclude_patterns = []
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
