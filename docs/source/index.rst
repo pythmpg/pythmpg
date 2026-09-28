@@ -31,3 +31,4 @@ without the need to access the python codes themselves.
    introduction
    user_guide
    api
+   release
