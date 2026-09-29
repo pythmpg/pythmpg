@@ -39,11 +39,11 @@ bns_dict : dict
     serial number (str).
 """
 
-from copy import copy
 import math
+from copy import copy
 
 # Import two functions from module 'pg_elements'
-from pythmpg.pg_elements import get_hex_table, get_cub_table
+from pythmpg.pg_elements import get_cub_table, get_hex_table
 
 # -----------------------
 # Define helper functions
