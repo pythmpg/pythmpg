@@ -29,7 +29,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.autosummary",
     "sphinx.ext.viewcode",
-    "myst-parser",
+    "myst_parser",
 ]
 
 napoleon_numpy_docstring = True
