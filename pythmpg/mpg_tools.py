@@ -38,15 +38,16 @@ def get_mpg_info(mpg_list="All"):
     """
     Return basic information for a list of MPGs.
 
-    For each MPG, determine the group order and classification as
-    'Grey', 'Black-White', or 'Colorless', and report the presence
-    or absence of six key symmetries (P, T, PT, PR, TR, PTR).
+    For each MPG, determine the BNS serial number, group order, and
+    classification as 'Grey', 'Black-White', or 'Colorless'. Also
+    report the presence or absence of six key symmetries (P, T,
+    PT, PR, TR, PTR).
 
     Parameters
     ----------
-    mpg_list : list of str or 'All', optional
-        MPG names to process.  Pass ``'All'`` (default) to process
-        all 122 MPGs in ``mpg_dict``.
+    mpg_list : list of str or str, optional
+        List of MPG names or single name to process.  Pass name as
+        ``'All'`` (default) to process all 122 MPGs in ``mpg_dict``.
 
     Returns
     -------
@@ -69,13 +70,8 @@ def get_mpg_info(mpg_list="All"):
     # Declare global variables
     global rot_dict, table_dict
 
-    # By default, works on all 122 MPGs
-    all_mpgs = (mpg_list == "All")
-    if all_mpgs:
-        mpg_list = list(mpg_dict)
-    else:
-        # For user-supplied names, translate to standard names if needed
-        mpg_list = [get_std_name(name) for name in mpg_list]
+    # Convert mpg_list to a list of strings and replace by standard names
+    mpg_list = process_argument(mpg_list)
 
     # initialize lists
     order_list = []
@@ -133,11 +129,7 @@ def get_mpg_info(mpg_list="All"):
         group_type_list.append(group_type)
 
     # Make bns_list
-    if all_mpgs:
-        bns_list = [bns_dict[x] for x in mpg_list]
-    else:
-        # not meaningful in this case
-        bns_list = ['']*len(mpg_list)
+    bns_list = [bns_dict[x] for x in mpg_list]
 
     # Pack lists into dictionary
     mpg_info_dict = {}
@@ -164,9 +156,9 @@ def get_num_indep(jahn_list, mpg_list="All"):
     jahn_list : list of str
         Jahn symbols to process (may include leading ``'a'`` or ``'e'``
         parity characters).
-    mpg_list : list of str or 'All', optional
-        MPG names to process.  Pass ``'All'`` (default) to process
-        all 122 MPGs in ``mpg_dict``.
+    mpg_list : list of str or str, optional
+        MPG names or single name to process.  Pass name as ``'All'``
+       (default) to process all 122 MPGs in ``mpg_dict``.
 
     Returns
     -------
@@ -179,12 +171,8 @@ def get_num_indep(jahn_list, mpg_list="All"):
     # Declare global variables
     global rot_dict, table_dict
 
-    # By default, works on all 122 MPGs
-    if mpg_list == "All":
-        mpg_list = list(mpg_dict)
-    else:
-        # For user-supplied names, translate to standard names if needed
-        mpg_list = [get_std_name(name) for name in mpg_list]
+    # Convert mpg_list to a list of strings and replace by standard names
+    mpg_list = process_argument(mpg_list)
 
     # Initialize dictionary to be returned
     num_indep_dict = {}
@@ -280,6 +268,39 @@ def get_num_indep(jahn_list, mpg_list="All"):
 # Helper functions intended as local
 # --------------------------------------------------------------
 
+def process_mpg_list(mpg_list):
+    """
+    Process ``mpg_list`` argument passed to ``get_mpg_info`` or
+    ``get_num_indep``, checking type and converting to a list of MPG
+    names (strings) if necessary.  Also translate alternative MPG
+    names to code standard.
+
+    Parameters
+    ----------
+    mpg_list : list or str
+        List of MPGs or single MPG name or ``'All'``
+
+    Returns
+    -------
+    mpg_list: list of str
+        List of MPGs to be processed
+    """
+
+    if not isinstance(mpg_list, (list, str)):
+        raise TypeError(f"Expected list or string")
+    if mpg_list == "All":
+        # List of all 122 MPGs
+        mpg_list = list(mpg_dict)
+    elif mpg_list is str:
+        # List containing a single MPG
+        mpg_list = [mpg_list]
+
+    # Translate alternative names to standard names if needed.
+    mpg_list = [get_std_name(name) for name in mpg_list]
+
+    return mpg_list
+
+
 def get_std_name(mpg_name):
     """
     Test if an input MPG name is one of the 122 standard Hermann-Mauguin
@@ -301,8 +322,8 @@ def get_std_name(mpg_name):
     if mpg_name in mpg_dict:
         return mpg_name
 
-    # Remove final ".1" and other appearances of "." if present
-    std_name = mpg_name.removesuffix(".1").replace(".","")
+    # Remove spaces, final ".1", and other appearances of "."
+    std_name = mpg_name.replace(" ","").removesuffix(".1").replace(".","")
     if std_name in mpg_dict:
         # Print warning
         print(f"Warning: MPG input name {mpg_name} changed to standard "
