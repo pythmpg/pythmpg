@@ -71,7 +71,7 @@ def get_mpg_info(mpg_list="All"):
     global rot_dict, table_dict
 
     # Convert mpg_list to a list of strings and replace by standard names
-    mpg_list = process_argument(mpg_list)
+    mpg_list = process_mpg_list(mpg_list)
 
     # initialize lists
     order_list = []
@@ -172,7 +172,7 @@ def get_num_indep(jahn_list, mpg_list="All"):
     global rot_dict, table_dict
 
     # Convert mpg_list to a list of strings and replace by standard names
-    mpg_list = process_argument(mpg_list)
+    mpg_list = process_mpg_list(mpg_list)
 
     # Initialize dictionary to be returned
     num_indep_dict = {}
