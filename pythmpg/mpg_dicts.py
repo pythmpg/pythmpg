@@ -6,7 +6,7 @@ Upon being imported, this module constructs seven dictionaries and makes
 them available to external modules as module-level attributes.  The
 first four are built from functions imported from ``pg_elements``; the
 remaining ones are built by functions :func:`get_mpg_dict`,
-:func"`get_mpg_alt_dict`, and :func:`get_bns_dict`, which are
+:func:"`get_mpg_alt_dict`, and :func:`get_bns_dict`, which are
 called at module level at the end of this file.  Following normal
 Python import rules, these module-level statements execute once
 per session on first import.
@@ -39,11 +39,11 @@ bns_dict : dict
     serial number (str).
 """
 
-from copy import copy
 import math
+from copy import copy
 
 # Import two functions from module 'pg_elements'
-from pythmpg.pg_elements import get_hex_table, get_cub_table
+from pythmpg.pg_elements import get_cub_table, get_hex_table
 
 # -----------------------
 # Define helper functions
