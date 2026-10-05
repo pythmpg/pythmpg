@@ -102,7 +102,7 @@ If you use the code in your paper, please cite us.  Here is a
    month = jun,
    title = {{Python Magnetic Point Group (PythMPG)}},
    url = {https://zenodo.org/records/18672613},
-   version = {1.0.0},
+   version = {1.1.0},
    year = {2026}
    }
 
