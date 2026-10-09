@@ -147,8 +147,20 @@ class TestMpgNameInput:
     def test_list_order_is_kept(self):
         assert process_mpg_list(["m-3m", "1", "mmm"]) == ["m-3m", "1", "mmm"]
 
-    @pytest.mark.parametrize("bad", [("mmm",), None, 3])
-    def test_non_list_or_string_raises(self, bad):
+    # Any iterable of names worked in 1.0.0 and must keep working.
+    @pytest.mark.parametrize(
+        "names",
+        [("mmm", "1"), iter(["mmm", "1"]), {"mmm": 0, "1": 0}.keys()],
+        ids=["tuple", "iterator", "dict_keys"],
+    )
+    def test_other_iterables_are_accepted(self, names):
+        assert process_mpg_list(names) == ["mmm", "1"]
+
+    def test_tuple_matches_list(self):
+        assert get_mpg_info(("mmm", "1")) == get_mpg_info(["mmm", "1"])
+
+    @pytest.mark.parametrize("bad", [None, 3])
+    def test_non_iterable_raises(self, bad):
         with pytest.raises(TypeError):
             process_mpg_list(bad)
 
