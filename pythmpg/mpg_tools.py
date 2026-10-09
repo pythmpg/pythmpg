@@ -16,14 +16,21 @@ contains a number of internally called helper functions, with
 dependencies on modules ``mpg_dicts`` and ``pg_elements``.
 """
 
-from itertools import permutations
-import numpy as np
 from copy import copy, deepcopy
+from itertools import permutations
 
-from pythmpg.mpg_dicts import hex_rot_dict, cub_rot_dict
-from pythmpg.mpg_dicts import hex_table_dict, cub_table_dict
-from pythmpg.mpg_dicts import mpg_dict, mpg_alt_dict, bns_dict
-from pythmpg.parse_jahn import parse_jahn_symbol, jahn_rank
+import numpy as np
+
+from pythmpg.mpg_dicts import (
+    bns_dict,
+    cub_rot_dict,
+    cub_table_dict,
+    hex_rot_dict,
+    hex_table_dict,
+    mpg_alt_dict,
+    mpg_dict,
+)
+from pythmpg.parse_jahn import jahn_rank, parse_jahn_symbol
 
 rot_dict = {}
 table_dict = {}
@@ -104,16 +111,16 @@ def get_mpg_info(mpg_list="All"):
 
         # Check for presence of six symmetries P, T, PT, PR, TR, PTR.
         # Define six Boolean variable for presence of symmetries
-        #
+        
         P_symm = ("1", 1, 0) in full_list
         T_symm = ("1", 0, 1) in full_list
         PT_symm = ("1", 1, 1) in full_list
-        #
+        
         P_T_parts = [(s[1], s[2]) for s in full_list]
         PR_symm = (1, 0) in P_T_parts
         TR_symm = (0, 1) in P_T_parts
         PTR_symm = (1, 1) in P_T_parts
-        #
+        
         symm_info = [P_symm, T_symm, PT_symm, PR_symm, TR_symm, PTR_symm]
         symm_info_list.append(symm_info)
 
@@ -287,11 +294,11 @@ def process_mpg_list(mpg_list):
     """
 
     if not isinstance(mpg_list, (list, str)):
-        raise TypeError(f"Expected list or string")
+        raise TypeError("Expected list or string")
     if mpg_list == "All":
         # List of all 122 MPGs
         mpg_list = list(mpg_dict)
-    elif mpg_list is str:
+    elif isinstance(mpg_list, str):
         # List containing a single MPG
         mpg_list = [mpg_list]
 
