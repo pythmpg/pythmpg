@@ -160,9 +160,9 @@ def get_num_indep(jahn_list, mpg_list="All"):
 
     Parameters
     ----------
-    jahn_list : list of str
-        Jahn symbols to process (may include leading ``'a'`` or ``'e'``
-        parity characters).
+    jahn_list : list of str or str
+        Jahn symbols or single symbol to process (may include leading
+        ``'a'`` or ``'e'`` parity characters).
     mpg_list : list of str or str, optional
         MPG names or single name to process.  Pass name as ``'All'``
         (default) to process all 122 MPGs in ``mpg_dict``.
@@ -180,6 +180,10 @@ def get_num_indep(jahn_list, mpg_list="All"):
 
     # Convert mpg_list to a list of strings and replace by standard names
     mpg_list = process_mpg_list(mpg_list)
+
+    # A single Jahn symbol is treated as a list of one symbol
+    if isinstance(jahn_list, str):
+        jahn_list = [jahn_list]
 
     # Initialize dictionary to be returned
     num_indep_dict = {}

@@ -127,6 +127,12 @@ class TestGetNumIndep:
         result = get_num_indep(["V2"], mpg_list="4/mmm")
         assert result["V2"] == [NUM_INDEP[("V2", "4/mmm")]]
 
+    # A string must be treated as one Jahn symbol, not iterated character by
+    # character (e.g. '[V2]' -> '[', 'V', '2', ']').
+    @pytest.mark.parametrize("symbol", ["[V2]", "V[V2]", "ae[V2]V", ""])
+    def test_single_jahn_symbol_string(self, symbol):
+        assert get_num_indep(symbol, "4/mmm") == get_num_indep([symbol], "4/mmm")
+
 
 class TestMpgNameInput:
     """``mpg_list`` handling: single names, alternative names, bad input."""
