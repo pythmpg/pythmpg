@@ -1,0 +1,6 @@
+.sidebar-brand-version {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: var(--font-size--normal);
+  color: var(--color-foreground-secondary);
+}
