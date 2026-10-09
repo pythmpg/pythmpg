@@ -11,14 +11,16 @@ import math
 import numpy as np
 import pytest
 
-from pythmpg.mpg_dicts import mpg_dict
+from pythmpg.mpg_dicts import mpg_alt_dict, mpg_dict
 from pythmpg.mpg_tools import (
     get_mpg_info,
     get_num_indep,
+    get_std_name,
     init_orth_list,
     is_zero,
     norm,
     permutation_sign,
+    process_mpg_list,
     symmetrize_indices,
     t_prod,
     transform_tensors,
@@ -120,6 +122,75 @@ class TestGetNumIndep:
     def test_invalid_symbol_raises(self):
         with pytest.raises(RuntimeError):
             get_num_indep(["Q7"], mpg_list=["1"])
+
+    def test_single_name_string(self):
+        result = get_num_indep(["V2"], mpg_list="4/mmm")
+        assert result["V2"] == [NUM_INDEP[("V2", "4/mmm")]]
+
+
+class TestMpgNameInput:
+    """``mpg_list`` handling: single names, alternative names, bad input."""
+
+    # A string must be treated as one name, never iterated character by
+    # character (e.g. 'mmm' -> ['m', 'm', 'm']).
+    @pytest.mark.parametrize("name", ["mmm", "m-3m", "4/mmm", "6'/m'mm'"])
+    def test_single_string_is_one_name(self, name):
+        assert process_mpg_list(name) == [name]
+
+    @pytest.mark.parametrize("name", ["mmm", "m-3m"])
+    def test_single_string_matches_list(self, name):
+        assert get_mpg_info(name) == get_mpg_info([name])
+
+    def test_all_string_expands_to_every_group(self):
+        assert process_mpg_list("All") == list(mpg_dict)
+
+    def test_list_order_is_kept(self):
+        assert process_mpg_list(["m-3m", "1", "mmm"]) == ["m-3m", "1", "mmm"]
+
+    @pytest.mark.parametrize("bad", [("mmm",), None, 3])
+    def test_non_list_or_string_raises(self, bad):
+        with pytest.raises(TypeError):
+            process_mpg_list(bad)
+
+    def test_unknown_name_raises(self):
+        with pytest.raises(ValueError, match="xyz"):
+            get_mpg_info(["xyz"])
+
+    def test_standard_name_passes_through_silently(self, capsys):
+        assert get_std_name("m'-3'm'") == "m'-3'm'"
+        assert capsys.readouterr().out == ""
+
+    @pytest.mark.parametrize(
+        "name,std",
+        [
+            ("m m m", "mmm"),
+            ("mmm.1", "mmm"),
+            ("4 / m m m", "4/mmm"),
+        ],
+    )
+    def test_spaces_and_dots_removed_from_standard_names(self, name, std, capsys):
+        assert get_std_name(name) == std
+        assert "changed to standard name" in capsys.readouterr().out
+
+    @pytest.mark.parametrize("alt,std", sorted(mpg_alt_dict.items()))
+    def test_every_alternative_name_translates(self, alt, std):
+        assert get_std_name(alt) == std
+
+    @pytest.mark.parametrize(
+        "name,std",
+        [
+            ("m 3 m", "m-3m"),
+            ("-4 m 2", "-42m"),
+            ("m ' 3 m '", "m'-3'm'"),
+            ("m3m.1", "m-3m"),
+        ],
+    )
+    def test_spaces_and_dots_removed_from_alternative_names(self, name, std):
+        assert get_std_name(name) == std
+
+    def test_alternative_name_gives_same_results(self):
+        assert get_mpg_info("m3m") == get_mpg_info("m-3m")
+        assert get_num_indep(["V[V2]"], "-4m2") == get_num_indep(["V[V2]"], "-42m")
 
 
 class TestLinearAlgebraHelpers:

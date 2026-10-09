@@ -74,6 +74,11 @@ class TestInvalidSymbols:
     def test_returns_none(self, bad):
         assert parse_jahn_symbol(bad) is None
 
+    @pytest.mark.parametrize("bad", ["V*", "a[V2]*", "*V2"])
+    def test_asterisk_is_rejected(self, bad, capsys):
+        assert parse_jahn_symbol(bad) is None
+        assert "'*' not supported" in capsys.readouterr().out
+
     def test_deeply_nested_is_rejected(self):
         # Pathological nesting must be rejected, not crash the parser.
         assert parse_jahn_symbol("[" * 9 + "V2" + "]" * 9) is None
