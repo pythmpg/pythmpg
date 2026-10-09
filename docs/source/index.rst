@@ -21,6 +21,66 @@ community of users can then use standard spreadsheet tools, such
 as sorting on columns and hiding columns and rows, to achieve similar ends,
 without the need to access the python codes themselves.
 
+Modules in the Package
+----------------------
+
+:mod:`~pythmpg.spreadsheet`
+   Defines :class:`~pythmpg.Spreadsheet`, the primary user-facing class.
+
+:mod:`~pythmpg.mpg_tools`
+   Functions :func:`~pythmpg.get_mpg_info` and :func:`~pythmpg.get_num_indep` for
+   querying MPG symmetry properties and tensor independence counts.
+
+:mod:`~pythmpg.mpg_dicts`
+   Module-level dictionaries describing all 122 MPGs, their
+   generators, and BNS serial numbers. Built on first import.
+
+:mod:`~pythmpg.pg_elements`
+   Constructs rotation matrices and multiplication tables for the
+   hexagonal and cubic crystallographic point groups.
+
+:mod:`~pythmpg.parse_jahn`
+   Parser for Jahn symbols that encodes index-symmetrization
+   instructions for arbitrary-rank tensors.
+
+Installation
+------------
+
+PythMPG is available through PyPI::
+
+   pip install pythmpg
+
+To install from source in editable mode::
+
+   git clone https://github.com/pythmpg/pythmpg.git
+   cd pythmpg
+   pip install -e .
+
+PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and numpy ≥ 2.0
+
+Citation
+--------
+
+If you use the code in your paper, please cite us.  Here is a
+``bibtex`` entry::
+
+   @software{Urru_Python_Magnetic_Point_2026,
+   author = {Urru, Andrea and Birol, Turan and Cole, Trey and Vanderbilt, David},
+   doi = {10.5281/zenodo.18672613},
+   license = {GPL-3.0-or-later},
+   month = oct,
+   title = {{Python Magnetic Point Group (PythMPG)}},
+   url = {https://zenodo.org/records/18672613},
+   version = {1.1.0},
+   year = {2026}
+   }
+
+License
+-------
+
+This software is released under the
+`GNU General Public License v3.0 <https://www.gnu.org/licenses/gpl-3.0.html>`_.
+
 
 .. toctree::
    :maxdepth: 2
