@@ -125,3 +125,12 @@ class TestReports:
     def test_jahn_report_runs(self, capsys):
         Spreadsheet().jahn_report()
         assert "Jahn Symbol Report" in capsys.readouterr().out
+
+    def test_jahn_report_invalid_symbol_raises(self):
+        # Must raise rather than exit the interpreter, and keep raising on a
+        # second call even though the failed parse is cached.
+        sheet = Spreadsheet()
+        sheet.add("bad", [("Bad", "V9X")])
+        for _ in range(2):
+            with pytest.raises(RuntimeError, match="V9X"):
+                sheet.jahn_report()
