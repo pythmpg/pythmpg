@@ -165,7 +165,7 @@ def get_num_indep(jahn_list, mpg_list="All"):
         parity characters).
     mpg_list : list of str or str, optional
         MPG names or single name to process.  Pass name as ``'All'``
-       (default) to process all 122 MPGs in ``mpg_dict``.
+        (default) to process all 122 MPGs in ``mpg_dict``.
 
     Returns
     -------
@@ -337,9 +337,9 @@ def get_std_name(mpg_name):
               f"name {std_name}")
         return std_name
 
-    # Look in the mpg_alt_dict dictionary
+    # Look up the cleaned-up name in the mpg_alt_dict dictionary
     try:
-        std_name = mpg_alt_dict[mpg_name]
+        std_name = mpg_alt_dict[std_name]
     except KeyError:
         raise ValueError(f"Input MPG name '{mpg_name}' not found in "
                          "standard or alternative name dictionaries")
