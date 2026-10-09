@@ -284,8 +284,9 @@ def process_mpg_list(mpg_list):
 
     Parameters
     ----------
-    mpg_list : list or str
-        List of MPGs or single MPG name or ``'All'``
+    mpg_list : iterable of str or str
+        List (or other iterable, e.g. tuple) of MPGs, single MPG
+        name, or ``'All'``
 
     Returns
     -------
@@ -293,14 +294,16 @@ def process_mpg_list(mpg_list):
         List of MPGs to be processed
     """
 
-    if not isinstance(mpg_list, (list, str)):
-        raise TypeError("Expected list or string")
-    if mpg_list == "All":
-        # List of all 122 MPGs
-        mpg_list = list(mpg_dict)
-    elif isinstance(mpg_list, str):
-        # List containing a single MPG
-        mpg_list = [mpg_list]
+    if isinstance(mpg_list, str):
+        # 'All' gives list of all 122 MPGs, otherwise list of a single MPG
+        mpg_list = list(mpg_dict) if mpg_list == "All" else [mpg_list]
+    else:
+        try:
+            mpg_list = list(mpg_list)
+        except TypeError:
+            raise TypeError(
+                "Expected an MPG name or a list of MPG names"
+            ) from None
 
     # Translate alternative names to standard names if needed.
     mpg_list = [get_std_name(name) for name in mpg_list]
