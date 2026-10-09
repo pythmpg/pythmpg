@@ -1,13 +1,15 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling>=1.27", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "pythmpg"
 dynamic = ["version"]
-description = "MPG project"
+description = "Symmetry properties of the 122 magnetic point groups and counts of independent tensor components"
 readme = "README.md"
 requires-python = ">=3.12"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
 authors = [
     {name = "Andrea Urru", email = "au168@physics.rutgers.edu" },
     {name = "Turan Birol", email = "tbirol@umn.edu" },
@@ -15,9 +17,15 @@ authors = [
     {name = "David Vanderbilt", email = "dhv@physics.rutgers.edu" }
 ]
 dependencies = [
-    "numpy",
+    "numpy>=2.0",
 ]
- 
+
+[project.urls]
+Documentation = "https://pythmpg.readthedocs.io/"
+"Release notes" = "https://pythmpg.readthedocs.io/en/stable/release.html"
+Source = "https://github.com/pythmpg/pythmpg"
+Issues = "https://github.com/pythmpg/pythmpg/issues"
+
 [project.optional-dependencies]
 docs = [
     "sphinx", "furo", "sphinx-autobuild", "myst-parser"
