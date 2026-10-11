@@ -11,10 +11,25 @@ authors:
     given-names: Trey
   - family-names: Vanderbilt
     given-names: David
-date-released: 2026-06-24
-version: "1.0.0"
+date-released: 2026-10-11
+version: "1.1.0"
 doi: 10.5281/zenodo.18672613
 url: https://zenodo.org/records/18672613
 repository: https://github.com/pythmpg/pythmpg
 license: GPL-3.0-or-later
 type: software
+preferred-citation:
+  type: article
+  title: "Screening of tensor properties by magnetic point group symmetries: The PythMPG code package"
+  authors:
+    - family-names: Urru
+      given-names: Andrea
+    - family-names: Birol
+      given-names: Turan
+    - family-names: Cole
+      given-names: Trey
+    - family-names: Vanderbilt
+      given-names: David
+  year: 2026
+  doi: 10.48550/arXiv.2610.10024
+  url: https://arxiv.org/abs/2610.10024
