@@ -16,14 +16,21 @@ contains a number of internally called helper functions, with
 dependencies on modules ``mpg_dicts`` and ``pg_elements``.
 """
 
-from itertools import permutations
-import numpy as np
 from copy import copy, deepcopy
+from itertools import permutations
 
-from pythmpg.mpg_dicts import hex_rot_dict, cub_rot_dict
-from pythmpg.mpg_dicts import hex_table_dict, cub_table_dict
-from pythmpg.mpg_dicts import mpg_dict, bns_dict
-from pythmpg.parse_jahn import parse_jahn_symbol, jahn_rank
+import numpy as np
+
+from pythmpg.mpg_dicts import (
+    bns_dict,
+    cub_rot_dict,
+    cub_table_dict,
+    hex_rot_dict,
+    hex_table_dict,
+    mpg_alt_dict,
+    mpg_dict,
+)
+from pythmpg.parse_jahn import jahn_rank, parse_jahn_symbol
 
 rot_dict = {}
 table_dict = {}
@@ -36,17 +43,18 @@ table_dict = {}
 
 def get_mpg_info(mpg_list="All"):
     """
-    Return and basic information for a list of MPGs.
+    Return basic information for a list of MPGs.
 
-    For each MPG, determines the group order and classification as
-    'Grey', 'Black-White', or 'Colorless', and reports the presence
-    or absence of six key symmetries (P, T, PT, PR, TR, PTR).
+    For each MPG, determine the BNS serial number, group order, and
+    classification as 'Grey', 'Black-White', or 'Colorless'. Also
+    report the presence or absence of six key symmetries (P, T,
+    PT, PR, TR, PTR).
 
     Parameters
     ----------
-    mpg_list : list of str or 'All', optional
-        MPG names to process.  Pass ``'All'`` (default) to process
-        all 122 MPGs in ``mpg_dict``.
+    mpg_list : list of str or str, optional
+        List of MPG names or single name to process.  Pass name as
+        ``'All'`` (default) to process all 122 MPGs in ``mpg_dict``.
 
     Returns
     -------
@@ -69,9 +77,8 @@ def get_mpg_info(mpg_list="All"):
     # Declare global variables
     global rot_dict, table_dict
 
-    # By default, works on all 122 MPGs
-    if mpg_list == "All":
-        mpg_list = list(mpg_dict)
+    # Convert mpg_list to a list of strings and replace by standard names
+    mpg_list = process_mpg_list(mpg_list)
 
     # initialize lists
     order_list = []
@@ -104,16 +111,16 @@ def get_mpg_info(mpg_list="All"):
 
         # Check for presence of six symmetries P, T, PT, PR, TR, PTR.
         # Define six Boolean variable for presence of symmetries
-        #
+        
         P_symm = ("1", 1, 0) in full_list
         T_symm = ("1", 0, 1) in full_list
         PT_symm = ("1", 1, 1) in full_list
-        #
+        
         P_T_parts = [(s[1], s[2]) for s in full_list]
         PR_symm = (1, 0) in P_T_parts
         TR_symm = (0, 1) in P_T_parts
         PTR_symm = (1, 1) in P_T_parts
-        #
+        
         symm_info = [P_symm, T_symm, PT_symm, PR_symm, TR_symm, PTR_symm]
         symm_info_list.append(symm_info)
 
@@ -143,21 +150,22 @@ def get_mpg_info(mpg_list="All"):
 
 def get_num_indep(jahn_list, mpg_list="All"):
     """
-    Return the number of independent tensor components for Jahn symbol / MPG pairs.
+    Return the number of independent tensor components for each
+    Jahn symbol / MPG pair.
 
-    For each Jahn symbol, parses the symbol to obtain index-symmetrization
-    instructions, constructs a basis of symmetrized orthonormal tensors,
-    and then further reduces that basis under each MPG's symmetry
+    For each Jahn symbol, parse the symbol to obtain index-symmetrization
+    instructions, construct a basis of symmetrized orthonormal tensors,
+    and then further reduce that basis under each MPG's symmetry
     operations to count the remaining independent components.
 
     Parameters
     ----------
-    jahn_list : list of str
-        Jahn symbols to process (may include leading ``'a'`` or ``'e'``
-        parity characters).
-    mpg_list : list of str or 'All', optional
-        MPG names to process.  Pass ``'All'`` (default) to process
-        all 122 MPGs in ``mpg_dict``.
+    jahn_list : list of str or str
+        Jahn symbols or single symbol to process (may include leading
+        ``'a'`` or ``'e'`` parity characters).
+    mpg_list : list of str or str, optional
+        MPG names or single name to process.  Pass name as ``'All'``
+        (default) to process all 122 MPGs in ``mpg_dict``.
 
     Returns
     -------
@@ -170,9 +178,12 @@ def get_num_indep(jahn_list, mpg_list="All"):
     # Declare global variables
     global rot_dict, table_dict
 
-    # By default, works on all 122 MPGs
-    if mpg_list == "All":
-        mpg_list = list(mpg_dict)
+    # Convert mpg_list to a list of strings and replace by standard names
+    mpg_list = process_mpg_list(mpg_list)
+
+    # A single Jahn symbol is treated as a list of one symbol
+    if isinstance(jahn_list, str):
+        jahn_list = [jahn_list]
 
     # Initialize dictionary to be returned
     num_indep_dict = {}
@@ -267,6 +278,82 @@ def get_num_indep(jahn_list, mpg_list="All"):
 # --------------------------------------------------------------
 # Helper functions intended as local
 # --------------------------------------------------------------
+
+def process_mpg_list(mpg_list):
+    """
+    Process ``mpg_list`` argument passed to ``get_mpg_info`` or
+    ``get_num_indep``, checking type and converting to a list of MPG
+    names (strings) if necessary.  Also translate alternative MPG
+    names to code standard.
+
+    Parameters
+    ----------
+    mpg_list : iterable of str or str
+        List (or other iterable, e.g. tuple) of MPGs, single MPG
+        name, or ``'All'``
+
+    Returns
+    -------
+    mpg_list: list of str
+        List of MPGs to be processed
+    """
+
+    if isinstance(mpg_list, str):
+        # 'All' gives list of all 122 MPGs, otherwise list of a single MPG
+        mpg_list = list(mpg_dict) if mpg_list == "All" else [mpg_list]
+    else:
+        try:
+            mpg_list = list(mpg_list)
+        except TypeError:
+            raise TypeError(
+                "Expected an MPG name or a list of MPG names"
+            ) from None
+
+    # Translate alternative names to standard names if needed.
+    mpg_list = [get_std_name(name) for name in mpg_list]
+
+    return mpg_list
+
+
+def get_std_name(mpg_name):
+    """
+    Test if an input MPG name is one of the 122 standard Hermann-Mauguin
+    short names used by this package, and translate to the standard name
+    if possible.
+
+    Parameters
+    ----------
+    mpg_name : str
+        User-supplied MPG name
+
+    Returns
+    -------
+    std_name : str
+        Standard MPG name
+    """
+
+    # Check if mpg_name is already a standard name
+    if mpg_name in mpg_dict:
+        return mpg_name
+
+    # Remove spaces, final ".1", and other appearances of "."
+    std_name = mpg_name.replace(" ","").removesuffix(".1").replace(".","")
+    if std_name in mpg_dict:
+        # Print warning
+        print(f"Warning: MPG input name {mpg_name} changed to standard "
+              f"name {std_name}")
+        return std_name
+
+    # Look up the cleaned-up name in the mpg_alt_dict dictionary
+    try:
+        std_name = mpg_alt_dict[std_name]
+    except KeyError:
+        raise ValueError(f"Input MPG name '{mpg_name}' not found in "
+                         "standard or alternative name dictionaries")
+    # If found, print warning
+    print(f"Warning: MPG input name {mpg_name} changed to standard "
+          f"name {std_name}")
+    return std_name
 
 
 def permutation_sign(p):

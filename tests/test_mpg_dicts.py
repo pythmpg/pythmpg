@@ -11,7 +11,7 @@ import math
 import pytest
 
 import pythmpg.mpg_dicts as md
-from pythmpg.mpg_dicts import bns_dict, mpg_dict, parse_mpg
+from pythmpg.mpg_dicts import bns_dict, mpg_alt_dict, mpg_dict, parse_mpg
 
 
 class TestMpgDict:
@@ -54,6 +54,20 @@ class TestMpgDict:
         for name in mpg_dict:
             _frame, _generators, gen_orders = parse_mpg(name)
             assert math.prod(gen_orders) == math.prod(mpg_dict[name][2])
+
+
+class TestMpgAltDict:
+    def test_every_target_is_a_standard_name(self):
+        assert set(mpg_alt_dict.values()) <= set(mpg_dict)
+
+    def test_no_alternative_shadows_a_standard_name(self):
+        # Standard names are matched first, so such an entry would never be used.
+        assert not set(mpg_alt_dict) & set(mpg_dict)
+
+    def test_keys_have_no_spaces_or_dots(self):
+        # get_std_name strips spaces and dots before the lookup, so a key
+        # containing either could never match.
+        assert not [k for k in mpg_alt_dict if " " in k or "." in k]
 
 
 class TestBnsDict:

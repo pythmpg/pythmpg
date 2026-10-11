@@ -174,6 +174,11 @@ class Spreadsheet:
         Iterates over all sections in ``section_dict``, pulls
         the Jahn symbol names, parses each one, and prints
         explanatory information.
+
+        Raises
+        ------
+        RuntimeError
+            If a Jahn symbol cannot be parsed.
         """
 
         print("==================")
@@ -198,17 +203,21 @@ class Spreadsheet:
             pty = f"({space_parity},{time_parity})"
             if jahn_bare == "":
                 print(f"Parities = {pty}, Scalar")
+                print("")
+                continue
             elif jahn_bare in jahn_dict:
                 print(f"Parities = {pty}, bare Jahn {jahn_bare} already parsed")
+                instructions = jahn_dict[jahn_bare]
             else:
                 print(f"Parities = {pty}, bare Jahn = {jahn_bare}")
                 # Parse rest of Jahn symbol to get instruction set
                 instructions = parse_jahn_symbol(jahn_bare, if_print=True)
 
-                # In case an exception was raised:
-                if instructions is None:
-                    print("  Correct the syntax of this Jahn symbol and try again.\n")
-                    exit(1)
+            # In case parsing failed (now or in an earlier call):
+            if instructions is None:
+                raise RuntimeError(
+                    f"Invalid Jahn symbol '{jahn}'. Correct the syntax and try again."
+                )
 
             print("")
 

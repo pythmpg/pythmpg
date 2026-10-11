@@ -6,7 +6,12 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parents[2]))
+from packaging.version import Version
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+import pythmpg
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -14,19 +19,23 @@ sys.path.insert(0, str(Path(__file__).parents[2]))
 project = 'PythMPG'
 copyright = '2026, Andrea Urru, Turan Birol, Trey Cole, David Vanderbilt'
 author = 'Andrea Urru, Turan Birol, Trey Cole, David Vanderbilt'
-
-# Pull the version from the package (single source of truth: the git tag).
-from pythmpg import __version__ as release
-version = release
+release = pythmpg.__version__
+# Version shown under the project name in the sidebar: "1.0.0" for tagged
+# builds, "1.0.dev" for untagged ones (hatch-vcs gives e.g. 1.0.1.dev23+g63d91de).
+_v = Version(release)
+version = f"{_v.major}.{_v.minor}.dev" if _v.is_devrelease else _v.public
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+master_doc = 'index' # The master toctree document.
 
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "sphinx.ext.autosummary",
     "sphinx.ext.viewcode",
+    "myst_parser",
 ]
 
 napoleon_numpy_docstring = True
@@ -34,12 +43,18 @@ napoleon_numpy_docstring = True
 templates_path = ['_templates']
 exclude_patterns = []
 
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'furo'
 html_title = 'PythMPG documentation'
 html_static_path = ['_static']
+html_css_files = ['custom.css']
 
 html_theme_options = {
     # Adds an "Edit source" link at the top-right of each page.
