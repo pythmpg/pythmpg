@@ -49,6 +49,6 @@ _Screening of tensor properties by magnetic point group symmetries:
 The pythmpg code package_, 2026, <https://arxiv.org/abs/2610.10024>.
 
 The spreadsheets and code are also available at
-<https://zenodo.org/records/20720849>. 
+<https://zenodo.org/records/18672613>. 
 This repository can be cited in Bibtex and other formats using
 the _Export_ tab on that page.
