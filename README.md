@@ -2,7 +2,7 @@
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18672613-blue.svg)](https://doi.org/10.5281/zenodo.18672613)
 [![PyPI](https://img.shields.io/pypi/v/pythmpg.svg)](https://pypi.org/project/pythmpg/)
-[![readthedocs status](https://app.readthedocs.org/projects/pythmpg/badge/?version=latest)](https://pythmpg.readthedocs.io/en/latest/) 
+[![readthedocs status](https://app.readthedocs.org/projects/pythmpg/badge)](https://pythmpg.readthedocs.io) 
 
 
 The ``pythmpg`` package provides tools for enumerating symmetry
@@ -20,7 +20,7 @@ without the need to access the Python codes themselves.
 
 ## Resources
 - **Source**: https://github.com/pythmpg/pythmpg
-- **Documentation**: https://pythmpg.readthedocs.io/en/latest/
+- **Documentation**: https://pythmpg.readthedocs.io
 - **Zenodo Repository**: https://zenodo.org/records/18672613
 
 ## Installation
