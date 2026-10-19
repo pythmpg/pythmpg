@@ -44,9 +44,10 @@ PythMPG ≥ 1.0.0 requires Python ≥ 3.12 and the core dependency:
 ## Citation
 
 The principal reference describing the code is
-Andrea Urru, Turan Birol, Trey Cole, and David Vanderbilt,
-_Screening of tensor properties by magnetic point group symmetries:
-The pythmpg code package_, 2026, <https://arxiv.org/abs/2610.10024>.
+
+> Andrea Urru, Turan Birol, Trey Cole, and David Vanderbilt,
+> _Screening of tensor properties by magnetic point group symmetries:
+> The pythmpg code package_, 2026, <https://arxiv.org/abs/2610.10024>.
 
 The spreadsheets and code are also available at
 <https://zenodo.org/records/18672613>. 
